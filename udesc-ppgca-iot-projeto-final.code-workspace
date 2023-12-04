@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "lora-gateway",
+			"path": "firmwares/lora-gateway"
+		},
+		{
+			"name": "water-sensor",
+			"path": "firmwares/water-sensor"
+		},
+		{
+			"name": "pump-actuator",
+			"path": "firmwares/pump-actuator"
+		},
+		{
+			"path": "applications/dashboard-app"
+		},
+		{
+			"path": "applications/server-app"
+		},
+		{
+			"path": "applications/mosquitto-server"
+		}
+	],
+	"settings": {}
+}
