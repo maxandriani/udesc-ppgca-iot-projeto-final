@@ -10,15 +10,25 @@ static TaskHandle_t _loraTaskHandle;
 static lora_svc_config_args_t *_config;
 static LoRaClass *_loraClient;
 static volatile device_list_t *_devices;
+static lora_on_receive_cb _on_receive;
 
 void lora_svc_loop(void *args) {
     SPI.begin(SCK,MISO,MOSI,SS);
 	_loraClient->begin(_config->freq, _config->paboost);
 
     for (;;) {
-        _loraClient->receive();
+
+        int32_t size = _loraClient->parsePacket();
+        if (size && _on_receive != NULL) {
+            (*_on_receive)(size);
+        }
+            
         vTaskDelay(20);
     }
+}
+
+void lora_set_on_receive_cb(lora_on_receive_cb cb) {
+    _on_receive = cb;
 }
 
 response_t lora_svc_config(LoRaClass *loraClient, lora_svc_config_args_t *config, device_list_t *devices) {
@@ -32,7 +42,7 @@ response_t lora_svc_config(LoRaClass *loraClient, lora_svc_config_args_t *config
 
 response_t lora_svc_init() {
     log_infoln("Scheduling LoRa Monitor");
-    xTaskCreatePinnedToCore(lora_svc_loop, "LoRa Svc Loo", 3072, NULL, 1, &_loraTaskHandle, ARDUINO_RUNNING_CORE);
+    xTaskCreatePinnedToCore(lora_svc_loop, "LoRa Svc Loo", 8124, NULL, 1, &_loraTaskHandle, ARDUINO_RUNNING_CORE);
     log_infoln("LoRa Monitor is Running");
     return Success;
 }
