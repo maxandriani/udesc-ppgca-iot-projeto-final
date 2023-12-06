@@ -1,0 +1,18 @@
+#ifndef BOARD_H
+#define BOARD_H
+
+#define BOARD_LED 25
+#define BOARD_PROG_BTN 0
+#define BOARD_LORA_MISO 19
+#define BOARD_LORA_CS 18
+#define BOARD_LORA_SCK 5
+#define BOARD_LORA_DIO1 33
+#define BOARD_LORA_DIO2 32
+#define BOARD_LORA_DIO3 26
+#define BOARD_LORA_MOSI 27
+#define BOARD_LORA_RST 14
+#define BOARD_OLED_SCL 15
+#define BOARD_OLED_SDA 4
+#define BOARD_OLED_RST 16
+
+#endif

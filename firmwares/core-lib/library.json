@@ -1,0 +1,26 @@
+{
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "CoreLib",
+    "version": "1.0.0",
+    "description": "Common functions to LoRa IOT projects.",
+    "keywords": "core, lora, iot, udesc",
+    "authors": [
+      {
+        "name": "Max Andriani",
+        "email": "max.andriani@gmail.com",
+        "url": "https://maxandriani.dev.br"
+      }
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "SPI": "latest",
+        "Arduino": "latest",
+        "heltecautomation/Heltec ESP32 Dev-Boards": "^1.1.2"
+    },
+    "frameworks": [
+        "arduino"
+    ],
+    "platforms": [
+        "ESP32"
+    ]
+  }
